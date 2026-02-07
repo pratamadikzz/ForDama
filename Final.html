@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Hello Dama ✨</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#fff7fb;
+  --card:#ffffff;
+  --text:#374151;
+  --pink:#ff8fb1;
+  --purple:#8b5cf6;
+  --blue:#60a5fa;
+  --green:#34d399;
+  --yellow:#fde68a;
+}
+body.dark{
+  --bg:#0f172a;
+  --card:#1e293b;
+  --text:#e5e7eb;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:Poppins,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  transition:.4s;
+  overflow-x:hidden;
+}
+
+/* blobs */
+.blob{
+  position:absolute;
+  border-radius:50%;
+  filter:blur(60px);
+  opacity:.45;
+  animation:float 8s ease-in-out infinite;
+  z-index:-1;
+}
+.pink{background:var(--pink);width:260px;height:260px;top:60px;left:-100px}
+.purple{background:var(--purple);width:320px;height:320px;bottom:200px;right:-140px}
+.blue{background:var(--blue);width:220px;height:220px;top:65%;left:60%}
+
+@keyframes float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-30px)}
+}
+
+/* OPENING */
+.opening{
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+.open-card{
+  background:var(--card);
+  padding:60px;
+  border-radius:36px;
+  box-shadow:0 40px 80px rgba(0,0,0,.15);
+}
+.open-card h1{font-size:38px}
+.open-card p{margin:18px 0;color:#6b7280}
+
+/* header */
+header{
+  padding:26px 8%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font-weight:700;
+}
+header span{color:var(--pink)}
+.toggle{cursor:pointer}
+
+/* sections */
+section{
+  padding:90px 8%;
+  max-width:1100px;
+  margin:auto;
+}
+.hidden{display:none}
+
+.hero{text-align:center}
+.badge{
+  display:inline-block;
+  padding:8px 16px;
+  background:var(--card);
+  border-radius:20px;
+  font-size:13px;
+  box-shadow:0 10px 20px rgba(0,0,0,.08);
+  margin-bottom:18px;
+}
+
+h1{font-size:44px}
+p{color:#6b7280}
+body.dark p{color:#cbd5f5}
+
+.btn{
+  margin-top:20px;
+  padding:14px 34px;
+  border:none;
+  border-radius:30px;
+  background:linear-gradient(135deg,var(--pink),var(--purple));
+  color:white;
+  cursor:pointer;
+  transition:.3s;
+}
+.btn:hover{
+  transform:translateY(-3px) scale(1.05);
+  box-shadow:0 15px 30px rgba(0,0,0,.25);
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:28px;
+  margin-top:60px;
+}
+
+.card{
+  background:var(--card);
+  padding:30px;
+  border-radius:28px;
+  box-shadow:0 20px 40px rgba(0,0,0,.08);
+  opacity:0;
+  transform:translateY(30px);
+  transition:.6s;
+}
+.card.show{opacity:1;transform:translateY(0)}
+.card:hover{transform:translateY(-10px) rotate(-1deg)}
+
+.icon{font-size:36px;margin-bottom:14px}
+
+.note{
+  background:linear-gradient(135deg,var(--card),#ffe4ef);
+  padding:60px;
+  border-radius:36px;
+  box-shadow:0 40px 80px rgba(0,0,0,.15);
+}
+
+.typing{
+  font-size:16px;
+  line-height:1.9;
+  white-space:pre-line;
+  min-height:300px;
+}
+
+/* FOOTER */
+footer{
+  background:var(--card);
+  padding:80px 8%;
+  margin-top:100px;
+}
+.footer-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:40px;
+}
+footer h4{margin-bottom:12px}
+footer p{font-size:13px;color:#6b7280}
+.copy{
+  text-align:center;
+  margin-top:50px;
+  font-size:12px;
+  opacity:.6;
+}
+
+@media(max-width:600px){
+  h1{font-size:32px}
+}
+</style>
+</head>
+
+<body>
+
+<div class="blob pink"></div>
+<div class="blob purple"></div>
+<div class="blob blue"></div>
+
+<!-- OPENING -->
+<div class="opening" id="opening">
+  <div class="open-card">
+    <h1>Hi Dama 🌷</h1>
+    <p>Ada halaman kecil yang dibuat<br>dengan niat baik.</p>
+    <button class="btn" onclick="enter()">Masuk pelan-pelan 🤍</button>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div id="main" class="hidden">
+
+<header>
+  Hello<span>Dama</span>
+  <div class="toggle" onclick="toggleDark()">🌙</div>
+</header>
+
+<section class="hero">
+  <div class="badge">cute • supportive • sincere</div>
+  <h1>This Page Exists<br>Just to Cheer You Up</h1>
+  <p>
+    Dibuat oleh <b>Dhika</b>.<br>
+    Bukan untuk pamer, cuma untuk menemani.
+  </p>
+  <button class="btn" onclick="scrollToCards()">Scroll pelan-pelan 🤍</button>
+</section>
+
+<section id="cards">
+  <div class="grid">
+    <div class="card reveal"><div class="icon">🌸</div>Kamu nggak harus sempurna untuk berharga.</div>
+    <div class="card reveal"><div class="icon">💪✨</div>Capek itu tanda kamu berusaha.</div>
+    <div class="card reveal"><div class="icon">📐💗</div>Dalam MTK, proses selalu lebih penting dari hasil cepat.</div>
+    <div class="card reveal"><div class="icon">🌍🤍</div>You are enough, even on your quiet days.</div>
+    <div class="card reveal"><div class="icon">🌱☀️</div>Pelan-pelan juga tetap sampai.</div>
+    <div class="card reveal"><div class="icon">🧠➕💖</div>Kalau perasaan itu angka, kamu bikin semuanya seimbang.</div>
+    <div class="card reveal"><div class="icon">🌼</div>Kehadiranmu itu menenangkan, tanpa harus banyak bicara.</div>
+    <div class="card reveal"><div class="icon">🚀</div>Your story doesn’t need to be rushed.</div>
+  </div>
+</section>
+
+<section>
+  <div class="note">
+    <h2>One Last Note 🤍</h2>
+    <div id="typing" class="typing"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <h4>About</h4>
+      <p>Personal supportive website.<br>Not a company, just care.</p>
+    </div>
+    <div>
+      <h4>Purpose</h4>
+      <p>To remind someone that<br>they’re doing okay.</p>
+    </div>
+    <div>
+      <h4>Made By</h4>
+      <p>Dhika ✨<br>With sincerity.</p>
+    </div>
+    <div>
+      <h4>Special For</h4>
+      <p>Dama 🌷<br>Just because.</p>
+    </div>
+  </div>
+  <div class="copy">© 2026 • Soft Feelings Studio</div>
+</footer>
+
+</div>
+
+<script>
+function enter(){
+  document.getElementById("opening").style.display="none";
+  document.getElementById("main").classList.remove("hidden");
+}
+function toggleDark(){
+  document.body.classList.toggle("dark");
+}
+function scrollToCards(){
+  document.getElementById("cards").scrollIntoView({behavior:"smooth"});
+}
+const cards=document.querySelectorAll('.reveal');
+window.addEventListener('scroll',()=>{
+  cards.forEach(c=>{
+    if(c.getBoundingClientRect().top < window.innerHeight-120){
+      c.classList.add('show');
+    }
+  });
+});
+const text =
+`Dama,
+
+Kalau hari ini rasanya berat,
+itu bukan tanda kamu lemah.
+
+Dalam matematika ada limit,
+mendekat tanpa harus terburu-buru.
+Dan hidup juga begitu.
+
+You don’t need to shine every day.
+Sometimes being steady is already strong.
+
+Kalau dunia terasa ramai,
+semoga halaman kecil ini
+jadi tempat singgah sebentar.
+
+Tetap jalan.
+Pelan-pelan.
+Dengan caramu sendiri.
+
+— Dhika`;
+let i=0;
+const target=document.getElementById("typing");
+(function type(){
+  if(i<text.length){
+    target.innerHTML+=text.charAt(i++);
+    setTimeout(type,28);
+  }
+})();
+</script>
+
+</body>
+</html>
